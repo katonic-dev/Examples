@@ -45,6 +45,26 @@
    ]
   },
   {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'1.19.5'"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.__version__"
+   ]
+  },
+  {
    "cell_type": "markdown",
    "metadata": {
     "tags": []
@@ -55,7 +75,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 3,
    "metadata": {
     "tags": [
      "block:loaddata",
@@ -64,12 +84,12 @@
    },
    "outputs": [],
    "source": [
-    "df = pd.read_csv(\"/usr/src/workdir/COMP_DEMO/iris/iris_load_data/iris.csv\")"
+    "df = pd.read_csv(\"https://raw.githubusercontent.com/katonic-dev/manual_usecases/master/iris/iris_load_data/iris.csv?token=ATCRWXR3Z2ROZENTVBYONUDAWR5DO\")"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 4,
    "metadata": {
     "tags": [
      "skip"
@@ -99,10 +119,10 @@
    "autosnapshot": false,
    "docker_image": "",
    "experiment": {
-    "id": "",
-    "name": ""
+    "id": "75b16a8e-0270-4d9f-a685-2a4512632b53",
+    "name": "automobile"
    },
-   "experiment_name": "",
+   "experiment_name": "automobile",
    "katib_metadata": {
     "algorithm": {
      "algorithmName": "grid"
@@ -117,8 +137,8 @@
     "parameters": []
    },
    "katib_run": false,
-   "pipeline_description": "",
-   "pipeline_name": "",
+   "pipeline_description": "manual-1",
+   "pipeline_name": "manual-1",
    "snapshot_volumes": false,
    "steps_defaults": [],
    "volume_access_mode": "rwm",

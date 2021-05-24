@@ -12,11 +12,12 @@ RUN echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/a
 RUN apt-get update
 RUN apt-get install -y kubectl
 
-ADD ./src/preprocessing.py  /opt/preprocessing.py
+ADD ./iris_load_data/load_data.py  /opt/load_data.py
 
 ENTRYPOINT ["/usr/local/bin/python3"]
-CMD ["/opt/preprocessing.py"]
+CMD ["/opt/load_data.py"]
 
 COPY . ./
 
 USER katonic
+
