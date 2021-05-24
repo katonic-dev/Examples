@@ -95,7 +95,7 @@
     "\n",
     "STORAGEACCOUNTNAME= \"katonicusecases\"\n",
     "STORAGEACCOUNTKEY= \"kxGVhR3tKmJoNdEFbhauyHOvBaNMEJR8/uIH+4NKX9QLbHEsEhmo5YQmuiUmSaW2g/96Fq3RrV9f3FeMyizzgg==\"    \n",
-    "CONTAINERNAME= \"modelbuilding\"\n",
+    "CONTAINERNAME= \"manual-pipeline\"\n",
     "BLOBNAME= \"automobile_data.csv\""
    ]
   },
@@ -366,6 +366,22 @@
    "display_name": "Python 3",
    "language": "python",
    "name": "python3"
+  },
+  "kubeflow_notebook": {
+   "autosnapshot": false,
+   "docker_image": "",
+   "experiment": {
+    "id": "",
+    "name": ""
+   },
+   "experiment_name": "",
+   "katib_run": false,
+   "pipeline_description": "",
+   "pipeline_name": "",
+   "snapshot_volumes": false,
+   "steps_defaults": [],
+   "volume_access_mode": "rwm",
+   "volumes": []
   },
   "language_info": {
    "codemirror_mode": {

@@ -117,7 +117,7 @@
     "\n",
     "STORAGEACCOUNTNAME= \"katonicusecases\"\n",
     "STORAGEACCOUNTKEY= \"kxGVhR3tKmJoNdEFbhauyHOvBaNMEJR8/uIH+4NKX9QLbHEsEhmo5YQmuiUmSaW2g/96Fq3RrV9f3FeMyizzgg==\"    \n",
-    "CONTAINERNAME= \"modelbuilding\"\n",
+    "CONTAINERNAME= \"manual-pipeline\"\n",
     "BLOBNAME= \"automobile_data.csv\""
    ]
   },
@@ -336,10 +336,10 @@
    "autosnapshot": false,
    "docker_image": "subhraj07/seldon-test:0.5",
    "experiment": {
-    "id": "new",
-    "name": "auto-mobile"
+    "id": "3dd42cfc-ff37-4c21-aabb-5372311c6f0e",
+    "name": "Default"
    },
-   "experiment_name": "auto-mobile",
+   "experiment_name": "Default",
    "katib_metadata": {
     "algorithm": {
      "algorithmName": "grid"
