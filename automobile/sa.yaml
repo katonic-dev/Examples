@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: minio-sa
+  namespace: kubeflow
+secrets:
+  - name: seldon-init-container-secret
