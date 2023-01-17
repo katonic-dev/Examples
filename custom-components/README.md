@@ -10,4 +10,4 @@ The example pipeline is running using the below dataset:
 https://www.kaggle.com/datasets/shivamb/bank-customer-segmentation
 ```
 
-As this data doesn't have any unique `ID` columns that's why we made a unique ID column and concatenated with it. The name of the id columns doesn't have to be `ID` it can be anything.
+As this data doesn't have any unique `ID` columns that's why we made a unique ID column and concatenated with it after downloading form the link. The name of the id columns doesn't have to be `ID` it can be anything.
