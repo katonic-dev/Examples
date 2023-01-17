@@ -1,0 +1,1143 @@
+{
+  "doc_type": "pipeline",
+  "version": "3.0",
+  "json_schema": "http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "id": "elyra-auto-generated-pipeline",
+  "primary_pipeline": "primary",
+  "pipelines": [
+    {
+      "id": "primary",
+      "nodes": [
+        {
+          "id": "bc15fe8b-6e26-45ae-9392-9f5e5e1bcfff",
+          "type": "execution_node",
+          "op": "local-file-catalog:6c42a829b504",
+          "app_data": {
+            "component_parameters": {
+              "data_path": {
+                "widget": "string",
+                "value": "bank_transactions.csv"
+              },
+              "is_training": {
+                "widget": "string",
+                "value": "True"
+              },
+              "storage_bucket": {
+                "widget": "string",
+                "value": "private-storage-8511b1c5"
+              },
+              "folder_name": {
+                "widget": "string",
+                "value": "Demo"
+              },
+              "target_column": {
+                "widget": "string",
+                "value": "TransactionAmount (INR)"
+              },
+              "id_column": {
+                "widget": "string",
+                "value": "ID"
+              },
+              "access_key": {
+                "widget": "string",
+                "value": "6HV0SUU0VJJL6K90HCZ1"
+              },
+              "secret_key": {
+                "widget": "string",
+                "value": "kKpII5dVGCW8LXXXd2H0m95GV75d0qdeziHMgTQc"
+              },
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": []
+            },
+            "component_source": "{\"catalog_type\": \"local-file-catalog\", \"component_ref\": {\"base_dir\": \"\", \"path\": \"/opt/katonic-studio-custom-components/FE/components/yamls/input_config.yaml\"}}",
+            "label": "",
+            "ui_data": {
+              "label": "Input Config",
+              "image": "/ws-05ef6e99-7c42-4335-bdf2-20e3fd6704b0-6385d5a4d0f0cc17198de497/static/elyra/kubeflow.svg",
+              "x_pos": 244,
+              "y_pos": 24.5,
+              "description": "Takes necessary parameters as input and prepares the pre-pipeline configurations."
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "98b97885-8e1e-438b-8604-652d7647a0e4",
+          "type": "execution_node",
+          "op": "local-file-catalog:a74e3969eb51",
+          "app_data": {
+            "component_parameters": {
+              "input_parameters": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "bc15fe8b-6e26-45ae-9392-9f5e5e1bcfff",
+                  "option": "output_parameters"
+                }
+              },
+              "column_names": {
+                "widget": "string",
+                "value": "CustAccountBalance"
+              },
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": []
+            },
+            "component_source": "{\"catalog_type\": \"local-file-catalog\", \"component_ref\": {\"base_dir\": \"\", \"path\": \"/opt/katonic-studio-custom-components/FE/components/yamls/mean_imputer.yaml\"}}",
+            "label": "",
+            "ui_data": {
+              "label": "Mean Imputer",
+              "image": "/ws-05ef6e99-7c42-4335-bdf2-20e3fd6704b0-6385d5a4d0f0cc17198de497/static/elyra/kubeflow.svg",
+              "x_pos": 46,
+              "y_pos": 136.5,
+              "description": "Performs imputation on the given column by the mean value of the respective column."
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "1b5b3b4a-f0d5-4bc7-93e1-adc0a4f0e50c",
+                  "node_id_ref": "bc15fe8b-6e26-45ae-9392-9f5e5e1bcfff",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "eee4c48c-8f9d-4fab-bf59-42df9cde3bff",
+          "type": "execution_node",
+          "op": "local-file-catalog:84f851c81a27",
+          "app_data": {
+            "component_parameters": {
+              "input_parameters": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "bc15fe8b-6e26-45ae-9392-9f5e5e1bcfff",
+                  "option": "output_parameters"
+                }
+              },
+              "column_names": {
+                "widget": "string",
+                "value": "CustAccountBalance"
+              },
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": []
+            },
+            "component_source": "{\"catalog_type\": \"local-file-catalog\", \"component_ref\": {\"base_dir\": \"\", \"path\": \"/opt/katonic-studio-custom-components/FE/components/yamls/median_imputer.yaml\"}}",
+            "label": "",
+            "ui_data": {
+              "label": "Median Imputer",
+              "image": "/ws-05ef6e99-7c42-4335-bdf2-20e3fd6704b0-6385d5a4d0f0cc17198de497/static/elyra/kubeflow.svg",
+              "x_pos": 265,
+              "y_pos": 127.5,
+              "description": "Performs imputation on the given column by the median value of the respective column."
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "10f591d4-6571-4a90-919b-22739e6c46c9",
+                  "node_id_ref": "bc15fe8b-6e26-45ae-9392-9f5e5e1bcfff",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1d88e4c0-9dc5-4fd5-bf44-58af3dc5ccdf",
+          "type": "execution_node",
+          "op": "local-file-catalog:a3c2ceccf325",
+          "app_data": {
+            "component_parameters": {
+              "input_parameters": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "bc15fe8b-6e26-45ae-9392-9f5e5e1bcfff",
+                  "option": "output_parameters"
+                }
+              },
+              "column_names": {
+                "widget": "string",
+                "value": "Cust.Gender,  Cust/Location"
+              },
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": []
+            },
+            "component_source": "{\"catalog_type\": \"local-file-catalog\", \"component_ref\": {\"base_dir\": \"\", \"path\": \"/opt/katonic-studio-custom-components/FE/components/yamls/mode_imputer.yaml\"}}",
+            "label": "",
+            "ui_data": {
+              "label": "Mode Imputer",
+              "image": "/ws-05ef6e99-7c42-4335-bdf2-20e3fd6704b0-6385d5a4d0f0cc17198de497/static/elyra/kubeflow.svg",
+              "x_pos": 454,
+              "y_pos": 126.5,
+              "description": "Performs imputation on the given column by the mode value of the respective column."
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "289ac685-3450-4581-aa85-6cb20000b128",
+                  "node_id_ref": "bc15fe8b-6e26-45ae-9392-9f5e5e1bcfff",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "9f003938-580f-400c-bef9-08cfbddef82c",
+          "type": "execution_node",
+          "op": "local-file-catalog:b2ba25b225ce",
+          "app_data": {
+            "component_parameters": {
+              "input_parameters": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "bc15fe8b-6e26-45ae-9392-9f5e5e1bcfff",
+                  "option": "output_parameters"
+                }
+              },
+              "column_names": {
+                "widget": "string",
+                "value": "CustAccountBalance"
+              },
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": []
+            },
+            "component_source": "{\"catalog_type\": \"local-file-catalog\", \"component_ref\": {\"base_dir\": \"\", \"path\": \"/opt/katonic-studio-custom-components/FE/components/yamls/fill_with_zero_imputer.yaml\"}}",
+            "label": "",
+            "ui_data": {
+              "label": "Fill With Zero Imputer",
+              "image": "/ws-05ef6e99-7c42-4335-bdf2-20e3fd6704b0-6385d5a4d0f0cc17198de497/static/elyra/kubeflow.svg",
+              "x_pos": 651,
+              "y_pos": 151.5,
+              "description": "Performs imputation on the given numerical column with zero."
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "a3f8b72c-f830-4c73-aba4-2ab4acd226c1",
+                  "node_id_ref": "bc15fe8b-6e26-45ae-9392-9f5e5e1bcfff",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ed6dba33-816b-4187-9961-9e7b88ba661d",
+          "type": "execution_node",
+          "op": "local-file-catalog:abc3c9ddf21a",
+          "app_data": {
+            "component_parameters": {
+              "input_parameters": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "bc15fe8b-6e26-45ae-9392-9f5e5e1bcfff",
+                  "option": "output_parameters"
+                }
+              },
+              "column_names": {
+                "widget": "string",
+                "value": "Cust/Location"
+              },
+              "fill_value": {
+                "widget": "string",
+                "value": "Unknown"
+              },
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": []
+            },
+            "component_source": "{\"catalog_type\": \"local-file-catalog\", \"component_ref\": {\"base_dir\": \"\", \"path\": \"/opt/katonic-studio-custom-components/FE/components/yamls/fill_new_category_imputer.yaml\"}}",
+            "label": "",
+            "ui_data": {
+              "label": "Fill New Category Imputer",
+              "image": "/ws-05ef6e99-7c42-4335-bdf2-20e3fd6704b0-6385d5a4d0f0cc17198de497/static/elyra/kubeflow.svg",
+              "x_pos": 858.0000152587891,
+              "y_pos": 124.5,
+              "description": "Performs imputation on the given categorical column by the new category provided by the user."
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "0b784114-b15c-455b-b3c6-2323c3f39b59",
+                  "node_id_ref": "bc15fe8b-6e26-45ae-9392-9f5e5e1bcfff",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "2a175ddc-f20b-4f87-8c32-493fb9331e3c",
+          "type": "execution_node",
+          "op": "local-file-catalog:82ecbab45375",
+          "app_data": {
+            "component_parameters": {
+              "input_parameters": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "bc15fe8b-6e26-45ae-9392-9f5e5e1bcfff",
+                  "option": "output_parameters"
+                }
+              },
+              "column_names": {
+                "widget": "string",
+                "value": "Customer%DOB"
+              },
+              "sort_columns": {
+                "widget": "string",
+                "value": "Transaction ID"
+              },
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": []
+            },
+            "component_source": "{\"catalog_type\": \"local-file-catalog\", \"component_ref\": {\"base_dir\": \"\", \"path\": \"/opt/katonic-studio-custom-components/FE/components/yamls/backward_fill_imputation.yaml\"}}",
+            "label": "",
+            "ui_data": {
+              "label": "Backward Fill Imputation",
+              "image": "/ws-05ef6e99-7c42-4335-bdf2-20e3fd6704b0-6385d5a4d0f0cc17198de497/static/elyra/kubeflow.svg",
+              "x_pos": 1084.9999694824219,
+              "y_pos": 119.5,
+              "description": "Performs backward fill imputation and stores the result in katonic file manager."
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "8776b56c-f609-4e83-ab38-e1bb5d602f72",
+                  "node_id_ref": "bc15fe8b-6e26-45ae-9392-9f5e5e1bcfff",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "77be628a-2dfe-48c0-9cca-79dd6f931551",
+          "type": "execution_node",
+          "op": "local-file-catalog:051b041bd7c6",
+          "app_data": {
+            "component_parameters": {
+              "input_parameters": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "bc15fe8b-6e26-45ae-9392-9f5e5e1bcfff",
+                  "option": "output_parameters"
+                }
+              },
+              "column_names": {
+                "widget": "string",
+                "value": "Customer%DOB"
+              },
+              "sort_columns": {
+                "widget": "string",
+                "value": "Transaction ID"
+              },
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": []
+            },
+            "component_source": "{\"catalog_type\": \"local-file-catalog\", \"component_ref\": {\"base_dir\": \"\", \"path\": \"/opt/katonic-studio-custom-components/FE/components/yamls/forward_fill_imputation.yaml\"}}",
+            "label": "",
+            "ui_data": {
+              "label": "Forward Fill Imputation",
+              "image": "/ws-05ef6e99-7c42-4335-bdf2-20e3fd6704b0-6385d5a4d0f0cc17198de497/static/elyra/kubeflow.svg",
+              "x_pos": 1289.9999389648438,
+              "y_pos": 115.5,
+              "description": "Performs forward fill imputation and stores the result in katonic file manager."
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "8e6e8ed0-89ad-4c1a-8d76-e12475e11fae",
+                  "node_id_ref": "bc15fe8b-6e26-45ae-9392-9f5e5e1bcfff",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "45dd7f8b-d1f0-4885-bc26-ea488f25115a",
+          "type": "execution_node",
+          "op": "local-file-catalog:362f24306923",
+          "app_data": {
+            "component_parameters": {
+              "input_parameters1": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "98b97885-8e1e-438b-8604-652d7647a0e4",
+                  "option": "output_parameters"
+                }
+              },
+              "input_parameters2": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "eee4c48c-8f9d-4fab-bf59-42df9cde3bff",
+                  "option": "output_parameters"
+                }
+              },
+              "input_parameters3": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "1d88e4c0-9dc5-4fd5-bf44-58af3dc5ccdf",
+                  "option": "output_parameters"
+                }
+              },
+              "input_parameters4": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "9f003938-580f-400c-bef9-08cfbddef82c",
+                  "option": "output_parameters"
+                }
+              },
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": []
+            },
+            "component_source": "{\"catalog_type\": \"local-file-catalog\", \"component_ref\": {\"base_dir\": \"\", \"path\": \"/opt/katonic-studio-custom-components/FE/components/yamls/join_data.yaml\"}}",
+            "label": "join data 1",
+            "ui_data": {
+              "label": "join data 1",
+              "image": "/ws-05ef6e99-7c42-4335-bdf2-20e3fd6704b0-6385d5a4d0f0cc17198de497/static/elyra/kubeflow.svg",
+              "x_pos": 494.9999694824219,
+              "y_pos": 319.5,
+              "description": "Performs joining of different dataframes."
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "3581c3fe-596f-4287-acac-f53a0bec13a5",
+                  "node_id_ref": "98b97885-8e1e-438b-8604-652d7647a0e4",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "0496a09d-5350-48d3-b4e1-444d89e6b0a6",
+                  "node_id_ref": "eee4c48c-8f9d-4fab-bf59-42df9cde3bff",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "261cc6d4-9d3b-48bf-bed0-8fe1f585e6bb",
+                  "node_id_ref": "1d88e4c0-9dc5-4fd5-bf44-58af3dc5ccdf",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "feef1d9d-bd26-48af-8310-71bf46a241c8",
+                  "node_id_ref": "9f003938-580f-400c-bef9-08cfbddef82c",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "07c54413-3366-4e5c-85a4-546f1ac68987",
+          "type": "execution_node",
+          "op": "local-file-catalog:362f24306923",
+          "app_data": {
+            "component_parameters": {
+              "input_parameters1": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "45dd7f8b-d1f0-4885-bc26-ea488f25115a",
+                  "option": "output_parameters"
+                }
+              },
+              "input_parameters2": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "ed6dba33-816b-4187-9961-9e7b88ba661d",
+                  "option": "output_parameters"
+                }
+              },
+              "input_parameters3": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "2a175ddc-f20b-4f87-8c32-493fb9331e3c",
+                  "option": "output_parameters"
+                }
+              },
+              "input_parameters4": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "77be628a-2dfe-48c0-9cca-79dd6f931551",
+                  "option": "output_parameters"
+                }
+              },
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": []
+            },
+            "component_source": "{\"catalog_type\": \"local-file-catalog\", \"component_ref\": {\"base_dir\": \"\", \"path\": \"/opt/katonic-studio-custom-components/FE/components/yamls/join_data.yaml\"}}",
+            "label": "",
+            "ui_data": {
+              "label": "Join Data",
+              "image": "/ws-05ef6e99-7c42-4335-bdf2-20e3fd6704b0-6385d5a4d0f0cc17198de497/static/elyra/kubeflow.svg",
+              "x_pos": 828,
+              "y_pos": 403.5,
+              "description": "Performs joining of different dataframes."
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "ff02824d-b829-4cf5-b994-e5174cfbe093",
+                  "node_id_ref": "45dd7f8b-d1f0-4885-bc26-ea488f25115a",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "59f68e61-fc25-498f-ab2b-f63e62d7609d",
+                  "node_id_ref": "ed6dba33-816b-4187-9961-9e7b88ba661d",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "5be35dbf-9b5d-46fd-a714-13f1c0b29be0",
+                  "node_id_ref": "2a175ddc-f20b-4f87-8c32-493fb9331e3c",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "82fd841d-f6af-4c2e-8de1-8b81923ade75",
+                  "node_id_ref": "77be628a-2dfe-48c0-9cca-79dd6f931551",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ad94d7e5-e6b8-4ce7-bdd6-35f54901d759",
+          "type": "execution_node",
+          "op": "local-file-catalog:8311339e3e07",
+          "app_data": {
+            "component_parameters": {
+              "input_parameters": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "07c54413-3366-4e5c-85a4-546f1ac68987",
+                  "option": "output_parameters"
+                }
+              },
+              "column_names": {
+                "widget": "string",
+                "value": "CustGender,  CustLocation"
+              },
+              "max_categories": {
+                "widget": "number",
+                "value": 4
+              },
+              "min_frequency": {
+                "widget": "number",
+                "value": 0
+              },
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": []
+            },
+            "component_source": "{\"catalog_type\": \"local-file-catalog\", \"component_ref\": {\"base_dir\": \"\", \"path\": \"/opt/katonic-studio-custom-components/FE/components/yamls/one_hot_encoder.yaml\"}}",
+            "label": "",
+            "ui_data": {
+              "label": "One Hot Encoding",
+              "image": "/ws-05ef6e99-7c42-4335-bdf2-20e3fd6704b0-6385d5a4d0f0cc17198de497/static/elyra/kubeflow.svg",
+              "x_pos": 840.9999694824219,
+              "y_pos": 483.5,
+              "description": "Performs encoding on the given columns."
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "d0ca8fef-3d2d-4ad2-a535-2b61f17f3c18",
+                  "node_id_ref": "07c54413-3366-4e5c-85a4-546f1ac68987",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "12a76598-7dff-4c9c-b100-4e54d0bda013",
+          "type": "execution_node",
+          "op": "local-file-catalog:782108da8f53",
+          "app_data": {
+            "component_parameters": {
+              "input_parameters": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "ad94d7e5-e6b8-4ce7-bdd6-35f54901d759",
+                  "option": "output_parameters"
+                }
+              },
+              "column_names": {
+                "widget": "string",
+                "value": "CustAccountBalance, TransactionTime"
+              },
+              "with_mean": {
+                "widget": "string",
+                "value": "True"
+              },
+              "with_std": {
+                "widget": "string",
+                "value": "True"
+              },
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": []
+            },
+            "component_source": "{\"catalog_type\": \"local-file-catalog\", \"component_ref\": {\"base_dir\": \"\", \"path\": \"/opt/katonic-studio-custom-components/FE/components/yamls/standard_scalar.yaml\"}}",
+            "label": "",
+            "ui_data": {
+              "label": "Standardization",
+              "image": "/ws-05ef6e99-7c42-4335-bdf2-20e3fd6704b0-6385d5a4d0f0cc17198de497/static/elyra/kubeflow.svg",
+              "x_pos": 839,
+              "y_pos": 559.5,
+              "description": "Performs standardization on the given columns."
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "db09024f-8ab9-4d7a-98ac-aae9e4803920",
+                  "node_id_ref": "ad94d7e5-e6b8-4ce7-bdd6-35f54901d759",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "0efc2f01-174b-456b-958b-cb7b125c0c1d",
+          "type": "execution_node",
+          "op": "local-file-catalog:202b84452f72",
+          "app_data": {
+            "component_parameters": {
+              "input_parameters": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "12a76598-7dff-4c9c-b100-4e54d0bda013",
+                  "option": "output_parameters"
+                }
+              },
+              "problem_type": {
+                "widget": "string",
+                "value": "regression"
+              },
+              "no_of_features": {
+                "widget": "number",
+                "value": 10
+              },
+              "step": {
+                "widget": "number",
+                "value": 1
+              },
+              "verbose": {
+                "widget": "number",
+                "value": 0
+              },
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": []
+            },
+            "component_source": "{\"catalog_type\": \"local-file-catalog\", \"component_ref\": {\"base_dir\": \"\", \"path\": \"/opt/katonic-studio-custom-components/FE/components/yamls/feature_selection_rfe.yaml\"}}",
+            "label": "",
+            "ui_data": {
+              "label": "Feature Selection(RFE)",
+              "image": "/ws-05ef6e99-7c42-4335-bdf2-20e3fd6704b0-6385d5a4d0f0cc17198de497/static/elyra/kubeflow.svg",
+              "x_pos": 690.9999694824219,
+              "y_pos": 650.5,
+              "description": "Performs feature selection on the entire data."
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "760e8ed9-82f0-4f8e-8060-3e268c563f48",
+                  "node_id_ref": "12a76598-7dff-4c9c-b100-4e54d0bda013",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "28b6653f-fe52-4bca-8990-658da8f770b6",
+          "type": "execution_node",
+          "op": "local-file-catalog:38a0a98abc09",
+          "app_data": {
+            "component_parameters": {
+              "input_parameters": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "12a76598-7dff-4c9c-b100-4e54d0bda013",
+                  "option": "output_parameters"
+                }
+              },
+              "problem_type": {
+                "widget": "string",
+                "value": "regression"
+              },
+              "correlation_method": {
+                "widget": "string",
+                "value": "pearson"
+              },
+              "correlation_threshold": {
+                "widget": "number",
+                "value": 0.01
+              },
+              "p_value_threshold": {
+                "widget": "number",
+                "value": 0.05
+              },
+              "mutual_info_threshold": {
+                "widget": "number",
+                "value": 0.002
+              },
+              "non_constant_threshold": {
+                "widget": "number",
+                "value": 0.1
+              },
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": []
+            },
+            "component_source": "{\"catalog_type\": \"local-file-catalog\", \"component_ref\": {\"base_dir\": \"\", \"path\": \"/opt/katonic-studio-custom-components/FE/components/yamls/feature_selection_thresholding.yaml\"}}",
+            "label": "",
+            "ui_data": {
+              "label": "Feature Selection",
+              "image": "/ws-05ef6e99-7c42-4335-bdf2-20e3fd6704b0-6385d5a4d0f0cc17198de497/static/elyra/kubeflow.svg",
+              "x_pos": 1016.0000305175781,
+              "y_pos": 661.5,
+              "description": "Performs feature selection on the data based on thresholds."
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "c2a36ba0-a687-4f0b-9450-f2da003b06e2",
+                  "node_id_ref": "12a76598-7dff-4c9c-b100-4e54d0bda013",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "app_data": {
+        "ui_data": {
+          "comments": []
+        },
+        "version": 8,
+        "runtime_type": "KUBEFLOW_PIPELINES",
+        "properties": {
+          "name": "custom_components",
+          "runtime": "Kubeflow Pipelines",
+          "pipeline_defaults": {
+            "mounted_volumes": [],
+            "kubernetes_tolerations": [],
+            "kubernetes_pod_labels": [],
+            "kubernetes_pod_annotations": [],
+            "kubernetes_shared_mem_size": {},
+            "env_vars": [],
+            "kubernetes_secrets": [],
+            "runtime_image": "quay.io/katonic/custom_component:FE",
+            "disable_node_caching": "True"
+          },
+          "pipeline_parameters": []
+        }
+      },
+      "runtime_ref": ""
+    }
+  ],
+  "schemas": []
+}
