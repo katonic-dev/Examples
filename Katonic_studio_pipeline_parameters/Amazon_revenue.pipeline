@@ -96,8 +96,8 @@
             "ui_data": {
               "label": "Model Training",
               "image": "/ws-8f415c37-4723-4cc8-b22d-8f2b655b1bdf-652504b24048661f076ef8ee/static/elyra/notebook.svg",
-              "x_pos": 25,
-              "y_pos": 208,
+              "x_pos": 298,
+              "y_pos": 224,
               "description": "Run notebook file"
             }
           },
@@ -164,8 +164,8 @@
             "ui_data": {
               "label": "Preprocessing",
               "image": "/ws-8f415c37-4723-4cc8-b22d-8f2b655b1bdf-652504b24048661f076ef8ee/static/elyra/notebook.svg",
-              "x_pos": 11,
-              "y_pos": 76,
+              "x_pos": 156,
+              "y_pos": 73,
               "description": "Run notebook file"
             }
           },
@@ -212,7 +212,8 @@
           "app_data": {
             "component_parameters": {
               "pipeline_parameters": [
-                "data_path"
+                "data_path",
+                "my_param"
               ],
               "dependencies": [],
               "include_subdirectories": false,
@@ -233,8 +234,8 @@
             "ui_data": {
               "label": "Train Test Split",
               "image": "/ws-8f415c37-4723-4cc8-b22d-8f2b655b1bdf-652504b24048661f076ef8ee/static/elyra/notebook.svg",
-              "x_pos": 21,
-              "y_pos": 141,
+              "x_pos": 296,
+              "y_pos": 144,
               "description": "Run notebook file"
             }
           },
@@ -301,8 +302,8 @@
             "ui_data": {
               "label": "Prediction",
               "image": "/ws-8f415c37-4723-4cc8-b22d-8f2b655b1bdf-652504b24048661f076ef8ee/static/elyra/notebook.svg",
-              "x_pos": 20,
-              "y_pos": 270,
+              "x_pos": 217,
+              "y_pos": 328,
               "description": "Run notebook file"
             }
           },
@@ -367,8 +368,8 @@
             "ui_data": {
               "label": "Send Alert",
               "image": "/ws-8f415c37-4723-4cc8-b22d-8f2b655b1bdf-652504b24048661f076ef8ee/static/elyra/notebook.svg",
-              "x_pos": 25,
-              "y_pos": 336,
+              "x_pos": 24,
+              "y_pos": 410,
               "description": "Run notebook file"
             }
           },
@@ -416,7 +417,7 @@
         "version": 8,
         "runtime_type": "KUBEFLOW_PIPELINES",
         "properties": {
-          "name": "newpipe",
+          "name": "Amazon_revenue",
           "runtime": "Kubeflow Pipelines",
           "pipeline_defaults": {
             "mounted_volumes": [],
@@ -431,6 +432,15 @@
           "pipeline_parameters": [
             {
               "name": "data_path",
+              "description": "",
+              "default_value": {
+                "type": "String",
+                "value": ""
+              },
+              "required": false
+            },
+            {
+              "name": "my_param",
               "description": "",
               "default_value": {
                 "type": "String",
